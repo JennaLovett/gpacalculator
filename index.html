@@ -5,8 +5,7 @@
         <link href="index.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="wrapper">
-
+        <div id="wrapper">
             <div class="container">
                 <div class="course">
                     Course: <input type="text" name="course">
@@ -50,12 +49,24 @@
             </div>
 
             <div class="container">
-                <div class="buttons">
-                    <button type="button" id="addCourse">Add Course</button>
+                <div id="buttons">
+                    <button type="button" id="addCourse" onclick="addCourse()">Add Course</button>
                     <button type="button" id="calculate">Calculate</button>
                 </div>
             </div>
-
         </div>
+
+        <script>
+            function addCourse()
+            {
+                var wrapperNode = document.getElementById("wrapper");
+                var buttons = document.getElementById("buttons");
+                var buttonsContainer = buttons.parentNode;
+                buttonsContainer.removeChild(buttons);
+                buttonsContainer.parentNode.removeChild(buttonsContainer);
+                wrapperNode.innerHTML +='<div class="container"><div class="course">Course: <input type="text" name="course">Letter Grade: <select name="grade"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="F">F</option></select>Credit: <input type="text" name="credit"></div></div>';
+                wrapperNode.innerHTML += '<div class="container"><div id="buttons"><button type="button" id="addCourse" onclick="addCourse()">Add Course</button><button type="button" id="calculate">Calculate</button></div></div>';
+            }
+        </script>
     </body>
 </html>
