@@ -8,6 +8,12 @@ var newGPA; //new gpa after current gpa and semester gpa are grouped together
 
 function calculateGPA()
 {
+    calculateSemesterGPA();
+    calculateCumulativeGPA();
+}
+
+function calculateSemesterGPA()
+{
     //go through each grade/credit and convert letter grade to numeric grade
     //sum quality points and credits
     for(index = 0; index < grades.length; ++index)
@@ -51,3 +57,8 @@ function calculateCumulativeGPA()
     var currentQualityPoints = currentGPA * totalCredits;
     newGPA = (currentQualityPoints + semesterQualityPoints) / (totalCredits + semesterCredits);
 }
+
+//TODO
+//1. display new cumulative gpa
+//2. don't remove entries when add course button is clicked
+//3. try to fix alignment issue when new course is added

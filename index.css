@@ -48,6 +48,10 @@ select
     border-radius: 5px;
     box-sizing: border-box;
 }
+.trashcan
+{
+    display: none;
+}
 #buttons
 {
     text-align: center;
