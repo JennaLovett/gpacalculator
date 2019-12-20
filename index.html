@@ -114,8 +114,8 @@
             function removeCourse(element)
             {
                 var wrapperNode = document.getElementById("wrapper");
-                var containerCount = document.getElementsByClassName("container").length;
-                if(containerCount > 4)
+                var containerCount = document.getElementsByClassName("course").length;
+                if(containerCount > 1)
                 {
                     wrapperNode.removeChild(element.parentNode.parentNode);
                 }
