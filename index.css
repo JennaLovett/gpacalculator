@@ -3,6 +3,7 @@ body
     background-color: #57B8FF;
     font-family: Calibri;
     font-size: 20px;
+    color: #241E4E;
 }
 #wrapper
 {
@@ -10,6 +11,10 @@ body
     width: 75%;
     margin: auto;
     margin-top: 2%;
+}
+h1
+{
+    color: #241E4E;
 }
 .container
 {
@@ -51,6 +56,9 @@ select
 .trashcan
 {
     display: none;
+    top: 50%;
+    margin: 0;
+    transform: translateY(25%);
 }
 #buttons
 {
@@ -66,14 +74,23 @@ button
     padding: 18px;
     font-size: 20px;
     margin: 0px 30px;
+    box-shadow: 2px 2px rgb(74, 159, 219);
 }
 #addCourse
 {
     border-radius: 8px;
     background-color: #FBB13C;
 }
+#addCourse:hover
+{
+    background-color: rgba(251, 178, 60, 0.89);
+}
 #calculate
 {
     border-radius: 8px;
     background-color: #2176AE;
+}
+#calculate:hover
+{
+    background-color: rgb(27, 100, 148);
 }
