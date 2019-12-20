@@ -1,31 +1,38 @@
-var A = 4.0;
-var B = 3.0;
-var C = 2.0;
-var D = 1.0;
-var F = 0.0;
-
-function calculate(letterGrade, credit)
+function calculateGPA()
 {
-    var x;
-    switch (letterGrade)
+    var grades = document.getElementsByName("grade");
+    var credits = document.getElementsByName("credit");
+    var index;
+    var qualityPoints = 0.0;
+    var semesterCredits = 0.0;
+    var semesterGPA;
+
+    for(index = 0; index < grades.length; ++index)
     {
-        case A:
-            x = 4.0;
-            break;
-        case B:
-            x = 3.0;
-            break;
-        case C:
-            x = 2.0;
-            break;
-        case D:
-            x = 1.0;
-            break;
-        case F:
-            x = 0.0;
-            break;
-        default:
-            x = 0.0;
-            break;
+        var letterGrade = grades[index].options[grades[index].selectedIndex].value;
+        var credit = credits[index].value;
+
+        var grade = 0.0;
+        switch (letterGrade)
+        {
+            case "A":
+                grade = 4.0;
+                break;
+            case "B":
+                grade = 3.0;
+                break;
+            case "C":
+                grade = 2.0;
+                break;
+            case "D":
+                grade = 1.0;
+                break;
+            case "F":
+                grade = 0.0;
+                break;
+        }
+        qualityPoints += parseFloat(grade, 10);
+        semesterCredits += parseFloat(credit, 10);
     }
+    semesterGPA = qualityPoints / parseFloat(index, 10);
 }
