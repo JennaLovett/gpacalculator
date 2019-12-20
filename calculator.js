@@ -1,12 +1,13 @@
+var grades = document.getElementsByName("grade");   //all grade dropdown boxes
+var credits = document.getElementsByName("credit"); //all credit textboxes
+var index;  //also serves as count of number of classes
+var semesterQualityPoints = 0.0;    //sum of individual numeric grade
+var semesterCredits = 0.0;  //total credits of semester classes
+var semesterGPA;    //semester GPA
+var newGPA; //new gpa after current gpa and semester gpa are grouped together
+
 function calculateGPA()
 {
-    var grades = document.getElementsByName("grade");   //all grade dropdown boxes
-    var credits = document.getElementsByName("credit"); //all credit textboxes
-    var index;  //also serves as count of number of classes
-    var semesterQualityPoints = 0.0;    //sum of individual numeric grade
-    var semesterCredits = 0.0;  //total credits of semester classes
-    var semesterGPA;    //semester GPA
-
     //go through each grade/credit and convert letter grade to numeric grade
     //sum quality points and credits
     for(index = 0; index < grades.length; ++index)
@@ -38,13 +39,15 @@ function calculateGPA()
     }
     //calculate semester GPA
     semesterGPA = semesterQualityPoints / parseFloat(semesterCredits, 10).toFixed(2);
-
-    //calculate cumulative GPA
-    //cGPA = qualityPoints / totalCredits
-    //qualityPoints = cGPA * totalCredits
 }
 
 function calculateCumulativeGPA()
 {
-
+    //calculate cumulative GPA
+    //cGPA = qualityPoints / totalCredits
+    //qualityPoints = cGPA * totalCredits
+    var totalCredits = parseFloat(document.getElementsByName("totalCredits")[0].value, 10);
+    var currentGPA = parseFloat(document.getElementsByName("currentGPA")[0].value, 10);
+    var currentQualityPoints = currentGPA * totalCredits;
+    newGPA = (currentQualityPoints + semesterQualityPoints) / (totalCredits + semesterCredits);
 }
