@@ -1,16 +1,17 @@
 var grades = document.getElementsByName("grade");   //all grade dropdown boxes
 var credits = document.getElementsByName("credit"); //all credit textboxes
-var index;  //also serves as count of number of classes
+var index = 0;  //also serves as count of number of classes
 var semesterQualityPoints = 0.0;    //sum of individual numeric grade
 var semesterCredits = 0.0;  //total credits of semester classes
-var semesterGPA;    //semester GPA
-var newGPA; //new gpa after current gpa and semester gpa are grouped together
+var semesterGPA = 0.0;    //semester GPA
+var newGPA = 0.0; //new gpa after current gpa and semester gpa are grouped together
 
 function calculateGPA()
 {
+    resetVariables();
     calculateSemesterGPA();
     calculateCumulativeGPA();
-    return newGPA;
+    addGPAToPage();
 }
 
 function calculateSemesterGPA()
@@ -56,8 +57,42 @@ function calculateCumulativeGPA()
     var totalCredits = parseFloat(document.getElementsByName("totalCredits")[0].value, 10);
     var currentGPA = parseFloat(document.getElementsByName("currentGPA")[0].value, 10);
     var currentQualityPoints = currentGPA * totalCredits;
-    newGPA = (currentQualityPoints + semesterQualityPoints) / (totalCredits + semesterCredits);
+    newGPA = ((currentQualityPoints + semesterQualityPoints) / (totalCredits + semesterCredits)).toFixed(2);
+    
 }
 
-//TODO
-//1. display new cumulative gpa
+function resetVariables()
+{
+    grades = document.getElementsByName("grade");   //all grade dropdown boxes
+    credits = document.getElementsByName("credit"); //all credit textboxes
+    index = 0;  //also serves as count of number of classes
+    semesterQualityPoints = 0.0;    //sum of individual numeric grade
+    semesterCredits = 0.0;  //total credits of semester classes
+    semesterGPA = 0.0;    //semester GPA
+    newGPA = 0.0; //new gpa after current gpa and semester gpa are grouped together
+}
+
+function addGPAToPage()
+{
+    //remove gpa if it exists
+    //add new gpa to page
+    var wrapperNode = document.getElementById("wrapper");
+    var gpaClass = document.getElementsByClassName("gpa");
+    if(gpaClass.length > 0)
+    {
+        var i;
+        for(i = 0; i < gpaClass.length; ++i)
+        {
+            var parent = gpaClass[i].parentNode;
+            wrapperNode.removeChild(parent);
+        }
+
+    }
+    var newHTML = '<div class="container">' + 
+                    '<div class="gpa">' + 
+                        '<span class="gpaspan">Semester GPA: ' + semesterGPA + '</span>' +
+                        ' <span class="gpaspan">Cumulative GPA: ' + newGPA + '</span>' +
+                    '</div>' + 
+                '</div>';
+    wrapperNode.insertAdjacentHTML("beforeend", newHTML);
+}
