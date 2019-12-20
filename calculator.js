@@ -10,6 +10,7 @@ function calculateGPA()
 {
     calculateSemesterGPA();
     calculateCumulativeGPA();
+    return newGPA;
 }
 
 function calculateSemesterGPA()
@@ -60,4 +61,3 @@ function calculateCumulativeGPA()
 
 //TODO
 //1. display new cumulative gpa
-//2. don't remove entries when add course button is clicked

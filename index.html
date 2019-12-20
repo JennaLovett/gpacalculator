@@ -61,11 +61,12 @@
                     <input type="image" src="trashcan.png" class="trashcan" onclick="removeCourse(this)">
                 </div>
             </div>
-
-            <div class="container">
-                <div id="buttons">
-                    <button type="button" id="addCourse" onclick="addCourse()">Add Course</button>
-                    <button type="button" id="calculate" onclick="calculateGPA()">Calculate</button>
+            
+                <div class="container">
+                    <div id="buttons">
+                        <button type="button" id="addCourse" onclick="addCourse()">Add Course</button>
+                        <button type="button" id="calculate" onclick="calculateGPA()">Calculate</button></div>
+                    
                 </div>
             </div>
         </div>
@@ -76,9 +77,28 @@
                 var wrapperNode = document.getElementById("wrapper");
                 var buttons = document.getElementById("buttons");
                 var buttonsContainer = buttons.parentNode;
+                var newHTML = '<div class="container">' + 
+                    '<div class="course" onmouseover="showTrashCan(this)" onmouseout="hideTrashCan(this)">' + 
+                        'Course: <input type="text" name="course">' +
+                        ' Letter Grade: <select name="grade">' + 
+                            '<option value="A">A</option>' + 
+                            '<option value="B">B</option>' + 
+                            '<option value="C">C</option>' + 
+                            '<option value="D">D</option>' + 
+                            '<option value="F">F</option></select>' + 
+                        ' Credit: <input type="text" name="credit"> ' + 
+                        '<input type="image" src="trashcan.png" class="trashcan" onclick="removeCourse(this)">' + 
+                    '</div>' + 
+                '</div>' + 
+                '<div class="container">' + 
+                    '<div id="buttons">' + 
+                        '<button type="button" id="addCourse" onclick="addCourse()">Add Course</button>' + 
+                        '<button type="button" id="calculate" onclick="calculateGPA()">Calculate</button>' + 
+                    '</div>' + 
+                '</div>'
                 buttonsContainer.removeChild(buttons);
                 buttonsContainer.parentNode.removeChild(buttonsContainer);
-                wrapperNode.insertAdjacentHTML('beforeend', '<div class="container"><div class="course" onmouseover="showTrashCan(this)" onmouseout="hideTrashCan(this)">Course: <input type="text" name="course"> Letter Grade: <select name="grade"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="F">F</option></select> Credit: <input type="text" name="credit"> <input type="image" src="trashcan.png" class="trashcan" onclick="removeCourse(this)"></div></div><div class="container"><div id="buttons"><button type="button" id="addCourse" onclick="addCourse()">Add Course</button><button type="button" id="calculate" onclick="calculateGPA()">Calculate</button></div></div>');
+                wrapperNode.insertAdjacentHTML('beforeend', newHTML);
             }
 
             function showTrashCan(element)
