@@ -61,4 +61,3 @@ function calculateCumulativeGPA()
 //TODO
 //1. display new cumulative gpa
 //2. don't remove entries when add course button is clicked
-//3. try to fix alignment issue when new course is added
